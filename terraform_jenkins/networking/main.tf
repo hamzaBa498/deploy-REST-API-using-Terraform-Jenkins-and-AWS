@@ -45,3 +45,23 @@ resource "aws_internet_gateway" "devops1_public_internet_gateway_hamza" {
   }
 }
 
+# Setup public Route table
+resource "aws_route_table" "devops_public_route_tables_hamza" {
+  vpc_id = aws_vpc.devops_project1_hamza.id
+  route {
+    cidr_block = "0.0.0.0/0" #internet request
+    gateway_id = aws_internet_gateway.devops1_public_internet_gateway_hamza.id
+  }
+  tags = {
+    Name = "devops_project1_public_rt_hamza"
+  }
+}
+
+# Setup private Route table
+resource "aws_route_table" "devops_private_route_tables_hamza" {
+  vpc_id = aws_vpc.devops_project1_hamza.id
+
+  tags = {
+    Name = "devops_project1_private_rt_hamza"
+  }
+}
