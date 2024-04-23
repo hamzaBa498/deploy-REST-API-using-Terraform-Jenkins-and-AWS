@@ -36,3 +36,12 @@ resource "aws_subnet" "devops1_private_subnets_hamza" {
     Name = "devops1-private-subnet-${count.index +1}_hamza"
   }
 }
+
+# Setup Internet Gateway : to allow internet access to all created ressources and to let them be accessible from internet
+resource "aws_internet_gateway" "devops1_public_internet_gateway_hamza" {
+  vpc_id = aws_vpc.devops_project1_hamza.id
+  tags = {
+    Name = "devops_project1_igw"
+  }
+}
+
