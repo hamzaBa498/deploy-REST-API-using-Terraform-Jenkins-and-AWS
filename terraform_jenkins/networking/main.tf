@@ -8,6 +8,10 @@ output "devops_project1_vpc_id" {
   value = aws_vpc.devops_project1_hamza.id
 }
 
+output "devops1_public_subnets_id" {
+  value = aws_subnet.devops1_public_subnets_hamza.*.id
+}
+
 # Setup Virtual Private Cloud (VPC) : ressource "ressource_name" "custom_name"
 resource "aws_vpc" "devops_project1_hamza" {
   cidr_block = var.vpc_cidr
