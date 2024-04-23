@@ -4,6 +4,9 @@ variable "eu_availability_zone" {}
 variable "cidr_public_subnet" {}
 variable "cidr_private_subnet" {}
 
+output "devops_project1_vpc_id" {
+  value = aws_vpc.devops_project1_hamza.id
+}
 
 # Setup Virtual Private Cloud (VPC) : ressource "ressource_name" "custom_name"
 resource "aws_vpc" "devops_project1_hamza" {
