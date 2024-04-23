@@ -65,3 +65,17 @@ resource "aws_route_table" "devops_private_route_tables_hamza" {
     Name = "devops_project1_private_rt_hamza"
   }
 }
+
+# Setup public route table and public subnet Association
+resource "aws_route_table_association" "devops_public_rt_subnet_association_hamza" {
+  count = length(aws_subnet.devops1_public_subnets_hamza)
+  subnet_id = aws_subnet.devops1_public_subnets_hamza[count.index].id  
+  route_table_id = aws_route_table.devops_public_route_tables_hamza.id
+}
+
+# Setup private route table and private subnet Association
+resource "aws_route_table_association" "devops_private_rt_subnet_association_hamza" {
+  count = length(aws_subnet.devops1_private_subnets_hamza)
+  subnet_id = aws_subnet.devops1_private_subnets_hamza[count.index].id
+  route_table_id = aws_route_table.devops_private_route_tables_hamza.id
+}
